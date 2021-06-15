@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <input type="number">
+    <button @click="result()">住所自動入力</button>
+    <p>住所：{{ adress }}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
+  methods: {
+    result() {
+      this.$router.push({ name: "Detail", params:{} })
+    }
   }
-}
+};
 </script>
+
+<style scoped>
+.home {
+  align-items: left;
+}
+</style>
