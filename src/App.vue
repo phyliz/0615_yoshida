@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <input type="number" v-model="number">
-    <button @click="getAdress()">住所自動入力</button>
+    <button @click="$router.push({ params: { number: number } })">住所自動入力</button>
     <p>Address: {{result}}</p>
   </div>
 </template>
@@ -9,18 +9,18 @@
 <script>
 import axios from "axios";
 export default {
-  props: ["zip"],
+  props: ["number"],
   data() {
     return {
-    
-    }
+      result: ""
+    };
   },
-  methods: {
-    getAdress() { 
-      axios.get(`https://apis.postcode-jp.com/api/v4/postcodes?&postcode=${this.number}&apiKey=rdb8v1la5bp0VK9SRelksibbCQdByaIXVoqTOBr`)
+  async created() {
+    const item = await axios.get(`curl https://apis.postcode-jp.com/api/v4/postcodes/${this.number}-d"apikey=rdb8v1la5bp0VK9SRelksibbCQdByaIXVoqTOBr"`);
+    const receivedData = item.data;
+    this.result = receivedData.data.allAdress;
     }
-  }
-};
+  };
 </script>
 
 
