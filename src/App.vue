@@ -12,14 +12,13 @@ export default {
   data() {
     return {
       zip: ""
-    };
+    }
   },
   methods: {
-    getAdress() {
-      axios.get(`curl https://apis.postcode-jp.com/api/v4/postcodes/${this.number}-d&apikey=rdb8v1la5bp0VK9SRelksibbCQdByaIXVoqTOBr`)
-      return {
-        result: "",
-      }
+    async getAdress() {
+      const item = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/${this.zip}?apikey=rdb8v1la5bp0VK9SRelksibbCQdByaIXVoqTOBr`);
+      console.log(item);
+      this.item = result;
     }
    }
 };
