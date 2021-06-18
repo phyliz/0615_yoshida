@@ -19,9 +19,7 @@ export default {
     async getAdress() {
       const item = await axios.get(`https://apis.postcode-jp.com/api/v4/postcodes/${this.zip}?apikey=rdb8v1la5bp0VK9SRelksibbCQdByaIXVoqTOBr`);
       console.log(item);
-      // const receivedData = item.data;
       this.result = item.data[0].allAddress;
-      // this.result = item;
     }
    }
 };
